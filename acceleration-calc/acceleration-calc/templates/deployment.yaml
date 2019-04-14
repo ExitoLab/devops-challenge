@@ -31,13 +31,13 @@ spec:
             httpGet:
               path: /health
               port: 3000
-              initialDelaySeconds: 180 # We need to wait for the database initialization
+              initialDelaySeconds: 240 # We need to wait for the database initialization
               timeoutSeconds: 30
           readinessProbe:
             httpGet:
               path: /health
               port: 3000
-              initialDelaySeconds: 180
+              initialDelaySeconds: 240
               timeoutSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
