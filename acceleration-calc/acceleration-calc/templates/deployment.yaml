@@ -24,19 +24,19 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: acceleration-calc
+            - name: http
               containerPort: 3000
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /health
-              port: 3002
+              port: 3000
               initialDelaySeconds: 180 # We need to wait for the database initialization
               timeoutSeconds: 30
           readinessProbe:
             httpGet:
               path: /health
-              port: 3002
+              port: 3000
               initialDelaySeconds: 180
               timeoutSeconds: 30
           resources:
